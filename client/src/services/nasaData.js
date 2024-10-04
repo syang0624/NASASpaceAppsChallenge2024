@@ -1,5 +1,3 @@
-// src/services/nasaData.js
-
 // Mock function that simulates fetching NASA data
 export const fetchNasaData = async () => {
   return {

@@ -1,5 +1,3 @@
-// src/services/gameLogic.js
-
 // Mock function to simulate saving user decisions
 export const saveUserDecision = async (userId, decisionData) => {
   console.log(`Saving decision for user ${userId}:`, decisionData);

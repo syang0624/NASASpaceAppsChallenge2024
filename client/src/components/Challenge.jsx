@@ -1,5 +1,3 @@
-// src/components/Challenge.jsx
-
 import React, { useState } from 'react';
 import { saveUserDecision } from '../services/gameLogic'; // Ensure correct import path
 
