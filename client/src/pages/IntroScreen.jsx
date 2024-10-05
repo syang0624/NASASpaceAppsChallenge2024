@@ -1,4 +1,3 @@
-import React from 'react';
 // import './IntroScreen.css'; // Add relevant styles
 
 const IntroScreen = ({ onStartGame }) => {

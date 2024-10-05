@@ -1,4 +1,3 @@
-import React from 'react';
 // import './ResultsScreen.css'; // Add styling for results
 
 const ResultScreen = ({ outcome, onNextChallenge }) => {

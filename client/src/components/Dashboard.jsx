@@ -1,6 +1,4 @@
-// src/components/Dashboard.jsx
-
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchNasaData } from '../services/nasaData'; // Now uses mock data
 
 const Dashboard = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import Challenge from '../components/Challenge'; // Reuse the Challenge component
 // import './ChallengeScreen.css';
 

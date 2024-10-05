@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { saveUserDecision } from '../services/gameLogic'; // Ensure correct import path
 
 const Challenge = ({

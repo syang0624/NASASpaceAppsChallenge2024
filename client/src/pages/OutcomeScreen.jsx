@@ -1,4 +1,3 @@
-import React from 'react';
 import FinalScreen from '../components/FinalScreen'; // Reuse FinalScreen component
 // import './OutcomeScreen.css';
 

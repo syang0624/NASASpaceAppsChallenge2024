@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import jsPDF from 'jspdf';
 // import './FinalScreen.css'; // Assuming you have a CSS file for styling
 
@@ -22,10 +22,7 @@ const FinalScreen = ({ finalOutcome, fullName, datePlayed }) => {
   return (
     <div className='final-screen'>
       <h1>80-Year Outcome</h1>
-      <p>
-        Based on your decisions, here’s how the world has evolved over the next
-        80 years:
-      </p>
+      <p>Based on your decisions, here’s how the world has evolved by 2080.</p>
       <div className='outcome-summary'>
         <h2>{finalOutcome}</h2>
         <p>

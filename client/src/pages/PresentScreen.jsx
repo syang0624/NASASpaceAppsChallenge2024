@@ -1,4 +1,3 @@
-import React from 'react';
 import Dashboard from '../components/Dashboard'; // Reuse Dashboard component
 // import './PresentScreen.css';
 
