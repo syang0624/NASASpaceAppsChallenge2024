@@ -14,13 +14,18 @@ app = FastAPI()
 
 
 # CORS middleware setup
+# CORS middleware setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",  # Local development
+        "https://syang0624.github.io"  # GitHub Pages deployment
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # GZip compression middleware
 app.add_middleware(GZipMiddleware, minimum_size=1000)
