@@ -14,7 +14,7 @@ function NameEntry({ onSubmitName }) {
 
   return (
     <div className="name-entry">
-      <h1>Enter your character's name</h1>
+      <h1>Enter your name</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

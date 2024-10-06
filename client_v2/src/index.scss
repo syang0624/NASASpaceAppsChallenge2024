@@ -9,42 +9,29 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #a6b37d;
-  color: #ffffff;
+  width: 100vw;
+  height: 100vh;
 }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0 0 15px;
-  font-weight: 600;
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-button {
-  font-family: inherit;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  background-color: #5a3d3d;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #8b5e5e;
-  }
-
-  &:disabled {
-    background-color: #777;
-    cursor: not-allowed;
-  }
+/* Background for NameEntry screen (1.svg) */
+.name-entry-bg {
+  background: url('../src/assets/images/1.svg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Background for other screens (2.svg) */
+.main-bg {
+  background: url('../src/assets/images/2.svg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }

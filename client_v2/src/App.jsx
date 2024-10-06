@@ -3,6 +3,7 @@ import GameRound from './components/GameRound';
 import FinalResult from './components/FinalResult';
 import NameEntry from './components/NameEntry';
 import GameIntro from './components/GameIntro';
+import './index.scss'; // Import global styles
 
 function App() {
   const [currentRound, setCurrentRound] = useState(0);
@@ -29,8 +30,11 @@ function App() {
     setIsIntroShown(true); // Move to game rounds after the intro screen
   };
 
+  // Determine the background class based on the screen
+  const backgroundClass = !playerName ? 'name-entry-bg' : 'main-bg';
+
   return (
-    <div className="App">
+    <div className={`App ${backgroundClass}`}>
       {!playerName ? (
         <NameEntry onSubmitName={handleSubmitName} />
       ) : !isIntroShown ? (
