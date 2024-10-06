@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 function GameRound({ playerName, onContinue, onGameEnd }) {
   const [x1, setX1] = useState(0);
   const [x2, setX2] = useState(0);
-  const [x3, setX3] = useState(0);
+  const [x3, setX3] = useState(10000);
   const [ghgData, setGhgData] = useState(null); // GHG data from backend
   const [year, setYear] = useState(null); // Start year (from /initial)
   const [loading, setLoading] = useState(true); // Loading state
@@ -154,12 +154,13 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
           </p>
           <p>{story}</p> {/* Display the story on every stage */}
           <div className="sliders">
+            For the next 5 years:
             <div>
               <label>Numbers of Trees planted: {x1}</label>
               <input
                 type="range"
                 min="0"
-                max="100"
+                max="1000000"
                 value={x1}
                 onChange={e => setX1(Number(e.target.value))}
               />
@@ -169,17 +170,17 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
               <input
                 type="range"
                 min="0"
-                max="100"
+                max="50000"
                 value={x2}
                 onChange={e => setX2(Number(e.target.value))}
               />
             </div>
             <div>
-              <label>Enegry Consumption: {x3}</label>
+              <label>Enegry Consumption (kW): {x3}</label>
               <input
                 type="range"
-                min="0"
-                max="100"
+                min="10000"
+                max="100000"
                 value={x3}
                 onChange={e => setX3(Number(e.target.value))}
               />
