@@ -155,7 +155,7 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
           <p>{story}</p> {/* Display the story on every stage */}
           <div className="sliders">
             <div>
-              <label>x1: {x1}</label>
+              <label>Numbers of Trees planted: {x1}</label>
               <input
                 type="range"
                 min="0"
@@ -165,7 +165,7 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
               />
             </div>
             <div>
-              <label>x2: {x2}</label>
+              <label>Flight Miles Traveled: {x2}</label>
               <input
                 type="range"
                 min="0"
@@ -175,7 +175,7 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
               />
             </div>
             <div>
-              <label>x3: {x3}</label>
+              <label>Enegry Consumption: {x3}</label>
               <input
                 type="range"
                 min="0"
