@@ -43,7 +43,7 @@ story_generator = Story()
 
 # 전역 변수로 데이터 저장
 initial_year = 2000
-initial_ghg = 100
+initial_ghg = 100 #! now a dummy value
 initial_story = story_generator.get_result(
     year=initial_year,
     ghg_level=initial_ghg,
@@ -56,7 +56,7 @@ current_data = OutputData(GHG=initial_ghg, story=initial_story, year=initial_yea
 @ghg_router.post("/input")
 async def input_data(data: InputData):
     global current_data
-    # GHG 계산 로직 (예시)
+    #! GHG calculation logic
     ghg = (data.x_1 + data.x_2 + data.x_3) * (data.year - 1999)  # 2000년부터 시작하므로 1999를 뺍니다
     
     current_data = OutputData(GHG=ghg, story="", year=data.year, certificate_level=None)
@@ -72,7 +72,7 @@ async def get_output():
     # certificate_level 초기화
     current_data.certificate_level = None
     
-    if current_data.year >= 2020:
+    if current_data.year >= 2020: #! these are dummy values
         # 인증 레벨 결정 로직 (예시)
         if current_data.GHG < 3000:
             current_data.certificate_level = "Gold"
