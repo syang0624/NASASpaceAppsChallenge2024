@@ -1,6 +1,6 @@
 import requests
 
-base_url = "http://localhost:8000/ghg"
+base_url = "http://101.101.218.177:8000/ghg"
 
 for year in range(2000, 2025, 5):
     post_data = {

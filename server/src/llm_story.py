@@ -21,12 +21,13 @@ prompt_api = PromptTemplate(
     input_variables=["year", "ghg_level", "certificate_level"],
     template="""
     You are a climate change storyteller. 
-    Create a brief 2-3 sentence story about the state of the US in the year {year}, 
+    Create a brief and short 2-3 sentence story about the state of the US in the year {year}, 
     where the Greenhouse Gas (GHG) level is {ghg_level}. 
     The story should be engaging, informative, and reflect the severity of climate change 
     based on the GHG level. 
     If the year is after 2020, mention the certificate level {certificate_level} and its implications. 
     Adjust the tone to be more urgent and serious for higher GHG levels.
+    Your answer cannot be longer than 50 words.
     """
 )
 
