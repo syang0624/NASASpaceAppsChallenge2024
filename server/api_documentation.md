@@ -78,7 +78,7 @@
 
 ```bash
 curl -X 'POST' \
-  'http://localhost:8000/ghg/input' \
+  'http://localhost:58000/ghg/input' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -93,7 +93,7 @@ curl -X 'POST' \
 
 ```bash
 curl -X 'GET' \
-  'http://localhost:8000/ghg/output' \
+  'http://localhost:58000/ghg/output' \
   -H 'accept: application/json'
 ```
 
