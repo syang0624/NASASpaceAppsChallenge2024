@@ -10,6 +10,7 @@ from dotenv import load_dotenv, find_dotenv
 
 _ = load_dotenv(find_dotenv())
 GROQ_API_KEY = os.environ["GROQ_API_KEY"]
+#GROQ_API_KEY='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'
 
 
 llm_api = ChatGroq(

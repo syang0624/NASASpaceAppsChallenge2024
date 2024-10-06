@@ -4,10 +4,14 @@ from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import logging
-from llm_story import Story
-from data/Models/models.py import load_and_preprocess_data, EmissionsPredictor
+from data.Models.models import load_and_preprocess_data, EmissionsPredictor
+from .llm_story import Story
+
+
+
 
 app = FastAPI()
+
 
 # CORS middleware setup
 app.add_middleware(
@@ -27,12 +31,15 @@ logger = logging.getLogger(__name__)
 
 # Initialize EmissionsPredictor
 predictor = EmissionsPredictor()
-file_url = "NASASpaceAppsChallenge2024/data/Models/"
+#file_url = "../../data/Models/"
+file_url = "/Users/godsonajodo/Desktop/Hackathon/NASASpaceAppsChallenge2024/data/Models/"
 
-# Load and preprocess data
+
+
 transport_df = load_and_preprocess_data(file_url + 'TransportX2.csv')
 electricity_df = load_and_preprocess_data(file_url + 'ElectricityX3.csv')
 agriculture_df = load_and_preprocess_data(file_url + 'AgricultureX1.csv')
+
 
 # Preprocess data and train the model
 combined_df = predictor.preprocess_data(transport_df, electricity_df, agriculture_df)
