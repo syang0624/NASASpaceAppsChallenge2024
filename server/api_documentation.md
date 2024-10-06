@@ -6,7 +6,31 @@
 
 ## Endpoints
 
-### 1. Input GHG Data
+### 1. Get Initial Data
+
+**Endpoint:** `/initial`
+**Method:** GET
+**Description:** Retrieves the initial year and GHG value.
+
+#### Response
+
+```json
+{
+  "year": int,
+  "GHG": float
+}
+```
+
+#### Response Fields
+
+- `year` (int): Initial year (2000)
+- `GHG` (float): Initial GHG value
+
+#### Status Codes
+
+- 200: Successful operation
+
+### 2. Input GHG Data
 
 **Endpoint:** `/input`
 **Method:** POST
