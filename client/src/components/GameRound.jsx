@@ -11,6 +11,16 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
   const [story, setStory] = useState(''); // Store LLM story
 
   const BASE_URL = 'http://101.101.218.177:8000/ghg';
+
+  // Now, use the BASE_URL for making API requests:
+  fetch(`${BASE_URL}/initial`)
+    .then(response => response.json())
+    .then(data => {
+      // console.log('Fetched data:', data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
   const finalYear = 2020; // The game should end after 2020
 
   // Fetch initial data (year 2000 and initial GHG value)
@@ -147,8 +157,13 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
       ) : (
         <>
           <h1>It's currently {year}</h1>
-          <p>
+          {/* <p>
             {ghgData
+              ? `Green House Gas Emissions (GHG): ${ghgData}`
+              : 'No data available'}
+          </p> */}
+          <p>
+            {ghgData !== null && ghgData !== undefined
               ? `Green House Gas Emissions (GHG): ${ghgData}`
               : 'No data available'}
           </p>
