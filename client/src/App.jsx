@@ -72,7 +72,10 @@ function App() {
 
       {/* Audio element */}
       <audio ref={audioRef} loop>
-        <source src="/audio/testMusic.mp3" type="audio/mpeg" />
+        <source
+          src="/NASASpaceAppsChallenge2024/audio/testMusic.mp3"
+          type="audio/mpeg"
+        />
         Your browser does not support the audio element.
       </audio>
     </div>
