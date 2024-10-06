@@ -19,7 +19,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Local development
-        "https://syang0624.github.io"  # GitHub Pages deployment
+        "https://syang0624.github.io",  # GitHub Pages deployment
+        "https://syang0624.github.io/NASASpaceAppsChallenge2024/"
+
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -144,17 +146,27 @@ async def get_output():
     logger.info(f"Year: {current_data.year}, GHG: {current_data.GHG}, Certificate Level: {current_data.certificate_level}")
 
     return current_data
-
 @ghg_router.get("/initial")
 async def get_initial_data():
-    return {
-        "year": initial_year,
-        "GHG": initial_ghg,
-        "story": initial_story,
-        "certificate_level": None,
-        "state_max_emissions": predictor.get_state_max('CA'),
-        "model_accuracy": predictor.get_model_accuracy()
-    }
+    try:
+        # Convert numpy types to Python native types
+        initial_ghg_float = float(initial_ghg)
+        state_max_emissions = float(predictor.get_state_max('CA'))
+        model_accuracy = {key: float(value) for key, value in predictor.get_model_accuracy().items()}
+
+        return {
+            "year": initial_year,
+            "GHG": initial_ghg_float,
+            "story": initial_story,
+            "certificate_level": None,
+            "state_max_emissions": state_max_emissions,
+            "model_accuracy": model_accuracy
+        }
+    except Exception as e:
+        logger.error(f"Error in /ghg/initial endpoint: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+
 
 # Include the new router in the app
 app.include_router(ghg_router, prefix="/ghg")
