@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import logging
 from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel
+from llm_story import Story
 
 app = FastAPI()
 
@@ -39,16 +40,19 @@ class OutputData(BaseModel):
     certificate_level: str | None = None
 
 # 전역 변수로 데이터 저장
-current_data = None
+initial_year = 2000
+initial_ghg = 0
+current_data = OutputData(GHG=initial_ghg, story="", year=initial_year, certificate_level=None)
+
+story_generator = Story()
 
 @ghg_router.post("/input")
 async def input_data(data: InputData):
     global current_data
     # GHG 계산 로직 (예시)
     ghg = (data.x_1 + data.x_2 + data.x_3) * (data.year - 1999)  # 2000년부터 시작하므로 1999를 뺍니다
-    story = f"In {data.year}, the GHG emission was {ghg} based on the input values."
     
-    current_data = OutputData(GHG=ghg, story=story, year = data.year)
+    current_data = OutputData(GHG=ghg, story="", year=data.year, certificate_level=None)
     
     return {"message": "Data processed successfully"}
 
@@ -58,20 +62,36 @@ async def get_output():
     if not current_data:
         return {"error": "No data available"}
     
-    if current_data.year > 2020:
+    # certificate_level 초기화
+    current_data.certificate_level = None
+    
+    if current_data.year >= 2020:
         # 인증 레벨 결정 로직 (예시)
         if current_data.GHG < 3000:
-            certificate_level = "Gold"
+            current_data.certificate_level = "Gold"
         elif current_data.GHG < 4000:
-            certificate_level = "Silver"
+            current_data.certificate_level = "Silver"
         else:
-            certificate_level = "Bronze"
-        
-        current_data.certificate_level = certificate_level
-    else:
-        current_data.certificate_level = None
+            current_data.certificate_level = "Bronze"
     
+    story = story_generator.get_result(
+        year = current_data.year,
+        ghg_level = current_data.GHG,
+        certificate_level = current_data.certificate_level
+    )
+    current_data.story = story
+
+    # 로깅 추가
+    print(f"Year: {current_data.year}, GHG: {current_data.GHG}, Certificate Level: {current_data.certificate_level}")
+
     return current_data
+
+@ghg_router.get("/initial")
+async def get_initial_data():
+    return {
+        "year": initial_year,
+        "GHG": initial_ghg
+    }
 
 # 새로운 라우터를 앱에 포함
 app.include_router(ghg_router, prefix="/ghg")
