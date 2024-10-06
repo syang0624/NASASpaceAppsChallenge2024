@@ -39,12 +39,19 @@ class OutputData(BaseModel):
     year: int
     certificate_level: str | None = None
 
+story_generator = Story()
+
 # 전역 변수로 데이터 저장
 initial_year = 2000
-initial_ghg = 0
-current_data = OutputData(GHG=initial_ghg, story="", year=initial_year, certificate_level=None)
+initial_ghg = 100
+initial_story = story_generator.get_result(
+    year=initial_year,
+    ghg_level=initial_ghg,
+    certificate_level=None
+)
+current_data = OutputData(GHG=initial_ghg, story=initial_story, year=initial_year, certificate_level=None)
 
-story_generator = Story()
+
 
 @ghg_router.post("/input")
 async def input_data(data: InputData):
