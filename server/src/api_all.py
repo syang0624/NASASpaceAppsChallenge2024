@@ -97,7 +97,9 @@ async def get_output():
 async def get_initial_data():
     return {
         "year": initial_year,
-        "GHG": initial_ghg
+        "GHG": initial_ghg,
+        "story": initial_story,
+        "certificate_level": None
     }
 
 # 새로운 라우터를 앱에 포함
