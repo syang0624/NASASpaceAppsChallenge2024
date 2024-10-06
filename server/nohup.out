@@ -1,0 +1,82 @@
+INFO:     Started server process [4889]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4901]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4914]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4914]
+INFO:     Started server process [4920]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4934]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4934]
+INFO:     Started server process [4940]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56996 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57002 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57014 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57030 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57042 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57054 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57070 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57078 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57088 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57094 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57108 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57114 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57122 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57132 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57138 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57148 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57160 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57166 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57182 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57190 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57206 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57212 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57216 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57218 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57220 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57226 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57236 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57238 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57242 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57250 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57264 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57276 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57286 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57310 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57320 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57322 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57354 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57366 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57374 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57380 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57388 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57402 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57414 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57416 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "GET /ghg/output HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57428 - "POST /ghg/input HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57434 - "GET /ghg/output HTTP/1.1" 200 OK

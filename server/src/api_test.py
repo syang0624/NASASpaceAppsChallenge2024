@@ -1,6 +1,6 @@
 import requests
 
-base_url = "http://localhost:58000/ghg"
+base_url = "http://localhost:8000/ghg"
 
 for year in range(2000, 2025):
     # POST 요청
