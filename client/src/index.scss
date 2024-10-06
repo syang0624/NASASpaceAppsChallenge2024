@@ -1,0 +1,55 @@
+// Import specific component styles
+@import './styles/gameRound';
+@import './styles/finalResult';
+@import './styles/nameEntry';
+@import './styles/gameIntro';
+
+/* Global styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Background for NameEntry screen (1.svg) */
+.name-entry-bg {
+  background: url('../src/assets/images/1.svg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Background for other screens (2.svg) */
+.main-bg {
+  background: url('../src/assets/images/2.svg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.music-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #5a3d3d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+
+  &:hover {
+    background-color: #8b5e5e;
+  }
+}
