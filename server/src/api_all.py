@@ -4,6 +4,14 @@ import logging
 from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel
 from llm_story import Story
+import from data/Models/models.py import load_and_preprocess_data, EmissionsPredictor
+
+predictor = EmissionsPredictor()
+file_url = "NASASpaceAppsChallenge2024/data/Models/"
+
+transport_df = load_and_preprocess_data
+
+
 
 app = FastAPI()
 
