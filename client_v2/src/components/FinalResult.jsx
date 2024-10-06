@@ -25,7 +25,6 @@ function FinalResult({ playerName, rounds }) {
 
   const handleDownloadCertificate = () => {
     const doc = new jsPDF();
-
     const { finalGhg, certificateLevel, story } = calculateOutcome();
 
     // Certificate Title - Centered
@@ -33,7 +32,7 @@ function FinalResult({ playerName, rounds }) {
     doc.setFont('helvetica', 'bold');
     doc.text('Certificate of Achievement', 105, 30, { align: 'center' });
 
-    // Subtitle
+    // Subtitle and player name
     doc.setFontSize(16);
     doc.setFont('helvetica', 'normal');
     doc.text(`This is to certify that ${playerName}`, 105, 45, {
@@ -46,17 +45,27 @@ function FinalResult({ playerName, rounds }) {
       { align: 'center' },
     );
 
-    // Outcome and Details
+    // Outcome and Details - Wrap the text to prevent overflow
     doc.setFontSize(14);
-    doc.text(`Outcome: ${story}`, 20, 70); // Story about the final outcome
-    doc.text(`Final GHG (2024): ${finalGhg}`, 20, 80);
-    doc.text(`Certificate Level: ${certificateLevel}`, 20, 90);
+    const wrappedStory = doc.splitTextToSize(story, 170); // Wrap the story text
+    doc.text('Outcome:', 20, 70);
+    doc.text(wrappedStory, 20, 80); // Start text below the label
 
-    // Footer Text (optional)
+    // Increase space after the story to avoid overlap
+    const storyEndY = 80 + wrappedStory.length * 7; // Adjusting Y position based on story length
+
+    // Add the Final GHG and Certificate Level
+    doc.text(`Final GHG (2024): ${finalGhg}`, 20, storyEndY + 10);
+    doc.text(`Certificate Level: ${certificateLevel}`, 20, storyEndY + 20);
+
+    // Footer Text - Centered
     doc.setFontSize(12);
-    doc.text('Awarded by NASA Space Apps Challenge, 2024.', 105, 120, {
-      align: 'center',
-    });
+    doc.text(
+      'Awarded by Team SBN @ NASA Space Apps Challenge, 2024.',
+      105,
+      storyEndY + 40,
+      { align: 'center' },
+    );
 
     // Draw a border around the page for styling
     doc.setDrawColor(0); // Black border
