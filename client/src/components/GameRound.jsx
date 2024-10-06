@@ -10,7 +10,19 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
   const [error, setError] = useState(null); // For error handling
   const [story, setStory] = useState(''); // Store LLM story
 
-  const BASE_URL = 'http://101.101.218.177:8000/ghg';
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+  // console.log('BASE_URL:', BASE_URL); // Debug the URL to ensure it's correct
+
+  // Now, use the BASE_URL for making API requests:
+  fetch(`${BASE_URL}/initial`)
+    .then(response => response.json())
+    .then(data => {
+      // console.log('Fetched data:', data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
   const finalYear = 2020; // The game should end after 2020
 
   // Fetch initial data (year 2000 and initial GHG value)
