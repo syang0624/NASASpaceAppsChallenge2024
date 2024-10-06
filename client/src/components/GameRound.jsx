@@ -10,7 +10,7 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
   const [error, setError] = useState(null); // For error handling
   const [story, setStory] = useState(''); // Store LLM story
 
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = 'http://101.101.218.177:8000/ghg';
 
   // Now, use the BASE_URL for making API requests:
   fetch(`${BASE_URL}/initial`)
@@ -157,8 +157,13 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
       ) : (
         <>
           <h1>It's currently {year}</h1>
-          <p>
+          {/* <p>
             {ghgData
+              ? `Green House Gas Emissions (GHG): ${ghgData}`
+              : 'No data available'}
+          </p> */}
+          <p>
+            {ghgData !== null && ghgData !== undefined
               ? `Green House Gas Emissions (GHG): ${ghgData}`
               : 'No data available'}
           </p>
