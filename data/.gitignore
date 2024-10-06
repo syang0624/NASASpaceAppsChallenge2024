@@ -1,0 +1,4 @@
+# data
+micasa-carbonflux-daygrid-v1/*.tif
+odiac-ffco2-monthgrid-v2023/*.tif
+sedac-popdensity-yeargrid5yr-v4.11/*.tif
