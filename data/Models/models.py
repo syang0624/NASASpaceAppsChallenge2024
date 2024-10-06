@@ -168,7 +168,7 @@ class EmissionsPredictor:
         # Save visualization data
         try:
             viz_data = [{'true': float(true), 'predicted': float(pred)} for true, pred in zip(y_test_unscaled, y_pred_unscaled)]
-            with open('prediction_viz_data.json', 'w') as f:
+            with open(file_url+'prediction_viz_data.json', 'w') as f:
                 json.dump(viz_data, f)
             logger.info("Successfully saved visualization data")
         except Exception as e:
@@ -249,61 +249,29 @@ class EmissionsPredictor:
 # Plotting functions
 import matplotlib.pyplot as plt
 
-# def plot_actual_vs_predicted(y_true, y_pred):
-#     plt.figure(figsize=(12, 6))
-#     plt.scatter(y_true, y_pred, color='blue', label='Predicted vs Actual')
-#     plt.plot([min(y_true), max(y_true)], [min(y_true), max(y_true)], color='red', linestyle='--', label='Perfect Prediction Line')
-#     plt.xlabel('Actual Emissions (MMT CO2)')
-#     plt.ylabel('Predicted Emissions (MMT CO2)')
-#     plt.title('Actual vs Predicted Emissions')
-#     plt.legend()
-#     plt.savefig(file_url+'metric_plots/actual_vs_predicted.png')
-#     plt.close()
-
-# def plot_time_series(y_true, y_pred):
-#     plt.figure(figsize=(14, 6))
-#     plt.plot(y_true, label='Actual Emissions', color='blue', linestyle='-', marker='o')
-#     plt.plot(y_pred, label='Predicted Emissions', color='orange', linestyle='--', marker='x')
-#     plt.xlabel('Sample Index')
-#     plt.ylabel('Emissions (MMT CO2)')
-#     plt.title('Time Series of Actual vs Predicted Emissions')
-#     plt.legend()
-#     plt.savefig(file_url+'metric_plots/time_series_comparison.png')
-#     plt.close()
-def plot_actual_vs_predicted(scaler, y_true, y_pred):
-    # Unscale the values before plotting
-    y_true_unscaled = scaler.inverse_transform(y_true.reshape(-1, 1))
-    y_pred_unscaled = scaler.inverse_transform(y_pred.reshape(-1, 1))
-
+def plot_actual_vs_predicted(y_true, y_pred):
     plt.figure(figsize=(12, 6))
-    plt.scatter(y_true_unscaled, y_pred_unscaled, color='blue', label='Predicted vs Actual')
-    plt.plot([min(y_true_unscaled), max(y_true_unscaled)], 
-             [min(y_true_unscaled), max(y_true_unscaled)], 
-             color='red', linestyle='--', label='Perfect Prediction Line')
+    plt.scatter(y_true, y_pred, color='blue', label='Predicted vs Actual')
+    plt.plot([min(y_true), max(y_true)], [min(y_true), max(y_true)], color='red', linestyle='--', label='Perfect Prediction Line')
     plt.xlabel('Actual Emissions (MMT CO2)')
     plt.ylabel('Predicted Emissions (MMT CO2)')
-    plt.title('Actual vs Predicted Emissions (Unscaled)')
+    plt.title('Actual vs Predicted Emissions')
     plt.legend()
-    plt.savefig(file_url + 'metric_plots/actual_vs_predicted_unscaled.png')
+    plt.savefig(file_url+'metric_plots/actual_vs_predicted.png')
     plt.close()
 
-def plot_time_series(scaler, y_true, y_pred):
-    # Unscale the values before plotting
-    y_true_unscaled = scaler.inverse_transform(y_true.reshape(-1, 1))
-    y_pred_unscaled = scaler.inverse_transform(y_pred.reshape(-1, 1))
-
+def plot_time_series(y_true, y_pred):
     plt.figure(figsize=(14, 6))
-    plt.plot(y_true_unscaled, label='Actual Emissions', color='blue', linestyle='-', marker='o')
-    plt.plot(y_pred_unscaled, label='Predicted Emissions', color='orange', linestyle='--', marker='x')
+    plt.plot(y_true, label='Actual Emissions', color='blue', linestyle='-', marker='o')
+    plt.plot(y_pred, label='Predicted Emissions', color='orange', linestyle='--', marker='x')
     plt.xlabel('Sample Index')
     plt.ylabel('Emissions (MMT CO2)')
-    plt.title('Time Series of Actual vs Predicted Emissions (Unscaled)')
+    plt.title('Time Series of Actual vs Predicted Emissions')
     plt.legend()
-    plt.savefig(file_url + 'metric_plots/time_series_comparison_unscaled.png')
+    plt.savefig(file_url+'metric_plots/time_series_comparison.png')
     plt.close()
 
 
-# Main execution
 if __name__ == "__main__":
     predictor = EmissionsPredictor()
     try:
@@ -327,23 +295,21 @@ if __name__ == "__main__":
         logger.info(f"  Std true value: {metrics['std_true']:.2f}")
         logger.info(f"  Std predicted value: {metrics['std_pred']:.2f}")
         
-        prediction = predictor.predict_emissions('MS', 2022, 5000, 10000, 5000)
+        prediction = predictor.predict_emissions('CA', 2022, 5000, 10000, 5000)
         logger.info(f"Predicted emissions: {prediction:.2f}")
         
         # Load predictions from the model to plot
         X, y = predictor.prepare_sequences(combined_df)
         X_reshaped = X.reshape((X.shape[0], predictor.n_steps, 1))
         y_pred = predictor.model.predict(X_reshaped)
-        y_pred_unscaled = predictor.scalers['total'].inverse_transform(y_pred.reshape(-1, 1))
-        y_test_unscaled = predictor.scalers['total'].inverse_transform(y.reshape(-1, 1))
+        #y_pred_unscaled = predictor.scalers['total'].inverse_transform(y_pred.reshape(-1, 1))
+        #y_test_unscaled = predictor.scalers['total'].inverse_transform(y.reshape(-1, 1))
 
 
-        # Plotting the results
-        # plot_actual_vs_predicted(y_test_unscaled, y_pred_unscaled)
-        # plot_time_series(y_test_unscaled, y_pred_unscaled)
-        # Assuming 'self.scalers['total']' is the correct scaler for the total emissions
-        plot_actual_vs_predicted(predictor.scalers['total'], y, y_pred)
-        plot_time_series(predictor.scalers['total'], y, y_pred)
+        #Plotting the results
+        plot_actual_vs_predicted(y, y_pred)
+        plot_time_series(y, y_pred)
+
 
 
     except Exception as e:
