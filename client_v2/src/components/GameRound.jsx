@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function GameRound({ playerName, onContinue, onGameEnd }) {
   const [x1, setX1] = useState(0);
@@ -141,7 +141,7 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
   };
 
   return (
-    <div className='game-round'>
+    <div className="game-round">
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -153,42 +153,42 @@ function GameRound({ playerName, onContinue, onGameEnd }) {
               : 'No data available'}
           </p>
           <p>{story}</p> {/* Display the story on every stage */}
-          <div className='sliders'>
+          <div className="sliders">
             <div>
               <label>x1: {x1}</label>
               <input
-                type='range'
-                min='0'
-                max='100'
+                type="range"
+                min="0"
+                max="100"
                 value={x1}
-                onChange={(e) => setX1(Number(e.target.value))}
+                onChange={e => setX1(Number(e.target.value))}
               />
             </div>
             <div>
               <label>x2: {x2}</label>
               <input
-                type='range'
-                min='0'
-                max='100'
+                type="range"
+                min="0"
+                max="100"
                 value={x2}
-                onChange={(e) => setX2(Number(e.target.value))}
+                onChange={e => setX2(Number(e.target.value))}
               />
             </div>
             <div>
               <label>x3: {x3}</label>
               <input
-                type='range'
-                min='0'
-                max='100'
+                type="range"
+                min="0"
+                max="100"
                 value={x3}
-                onChange={(e) => setX3(Number(e.target.value))}
+                onChange={e => setX3(Number(e.target.value))}
               />
             </div>
           </div>
           <button onClick={handleSubmit} disabled={loading}>
             {loading ? 'Processing...' : 'Continue'}
           </button>
-          {error && <p className='error'>Error: {error}</p>}
+          {error && <p className="error">Error: {error}</p>}
         </>
       )}
     </div>

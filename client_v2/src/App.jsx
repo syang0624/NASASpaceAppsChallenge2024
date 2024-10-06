@@ -11,17 +11,17 @@ function App() {
   const [playerName, setPlayerName] = useState(''); // Store player name
   const [isIntroShown, setIsIntroShown] = useState(false); // Track if intro has been shown
 
-  const handleContinue = (roundData) => {
+  const handleContinue = roundData => {
     setGameData([...gameData, roundData]);
-    setCurrentRound((prevRound) => prevRound + 1);
+    setCurrentRound(prevRound => prevRound + 1);
   };
 
-  const handleGameEnd = (finalData) => {
+  const handleGameEnd = finalData => {
     setGameData([...gameData, finalData]); // Store final round data
     setIsGameEnded(true); // Mark the game as ended
   };
 
-  const handleSubmitName = (name) => {
+  const handleSubmitName = name => {
     setPlayerName(name); // Set player name when they submit it
   };
 
@@ -30,7 +30,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       {!playerName ? (
         <NameEntry onSubmitName={handleSubmitName} />
       ) : !isIntroShown ? (

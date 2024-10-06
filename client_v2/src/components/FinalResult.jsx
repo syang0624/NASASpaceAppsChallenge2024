@@ -1,4 +1,3 @@
-import React from 'react';
 import jsPDF from 'jspdf';
 
 function FinalResult({ playerName, rounds }) {
@@ -26,27 +25,52 @@ function FinalResult({ playerName, rounds }) {
 
   const handleDownloadCertificate = () => {
     const doc = new jsPDF();
+
     const { finalGhg, certificateLevel, story } = calculateOutcome();
 
-    doc.setFontSize(16);
-    doc.text(20, 20, 'Certificate of Achievement');
-    doc.text(20, 30, `This is to certify that ${playerName}`);
-    doc.text(
-      20,
-      40,
-      'has successfully completed the climate decision-making game.'
-    );
-    doc.text(20, 50, `Outcome: ${story}`);
-    doc.text(20, 60, `Final GHG (2024): ${finalGhg}`);
-    doc.text(20, 70, `Certificate Level: ${certificateLevel}`);
+    // Certificate Title - Centered
+    doc.setFontSize(24);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Certificate of Achievement', 105, 30, { align: 'center' });
 
+    // Subtitle
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`This is to certify that ${playerName}`, 105, 45, {
+      align: 'center',
+    });
+    doc.text(
+      'has successfully completed the climate decision-making game.',
+      105,
+      55,
+      { align: 'center' },
+    );
+
+    // Outcome and Details
+    doc.setFontSize(14);
+    doc.text(`Outcome: ${story}`, 20, 70); // Story about the final outcome
+    doc.text(`Final GHG (2024): ${finalGhg}`, 20, 80);
+    doc.text(`Certificate Level: ${certificateLevel}`, 20, 90);
+
+    // Footer Text (optional)
+    doc.setFontSize(12);
+    doc.text('Awarded by NASA Space Apps Challenge, 2024.', 105, 120, {
+      align: 'center',
+    });
+
+    // Draw a border around the page for styling
+    doc.setDrawColor(0); // Black border
+    doc.setLineWidth(1);
+    doc.rect(10, 10, 190, 270); // Rectangle border around the page
+
+    // Save the PDF with the player's name
     doc.save(`${playerName}_certificate.pdf`);
   };
 
   const { finalGhg, certificateLevel } = calculateOutcome();
 
   return (
-    <div className='final-result'>
+    <div className="final-result">
       <h1>Congratulations, {playerName}!</h1>
       <p>Your decisions have led to the following outcome:</p>
       <p>

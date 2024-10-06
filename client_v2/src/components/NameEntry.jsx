@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function NameEntry({ onSubmitName }) {
   const [name, setName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (name.trim()) {
       onSubmitName(name.trim()); // Pass the name to parent component
@@ -13,16 +13,16 @@ function NameEntry({ onSubmitName }) {
   };
 
   return (
-    <div className='name-entry'>
+    <div className="name-entry">
       <h1>Enter your character's name</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          placeholder='Enter your name...'
+          type="text"
+          placeholder="Enter your name..."
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
         />
-        <button type='submit'>Start Game</button>
+        <button type="submit">Start Game</button>
       </form>
     </div>
   );

@@ -1,8 +1,6 @@
-import React from 'react';
-
 function GameIntro({ playerName, onNext }) {
   return (
-    <div className='game-intro'>
+    <div className="game-intro">
       <h1>Welcome to the Year 2024</h1>
       <p>
         Hello, <strong>{playerName}</strong>, and welcome to the year 2024. The
