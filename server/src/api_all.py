@@ -21,7 +21,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # Local development (if needed)
         "https://syang0624.github.io",  # GitHub Pages deployment (if needed)
-        "http://101.101.218.177"  # External IP address
+        "http://101.101.218.177"  # External IP address, 
+        "https://syang0624.github.io/NASASpaceAppsChallenge2024"
     ],
     allow_credentials=True,
     allow_methods=["*"],
